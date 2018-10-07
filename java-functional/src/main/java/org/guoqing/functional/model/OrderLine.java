@@ -1,4 +1,4 @@
-package org.guoqing.java_functional.model;
+package org.guoqing.functional.model;
 
 /**
  * ${DESCRIPTION}

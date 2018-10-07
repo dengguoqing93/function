@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>org.guoqing</groupId>
-    <artifactId>java_functional</artifactId>
+    <artifactId>java-functional</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 

@@ -1,4 +1,4 @@
-package org.guoqing.java_functional.service;
+package org.guoqing.functional.service;
 
 import model.OrderLine;
 import model.Price;

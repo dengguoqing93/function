@@ -1,4 +1,4 @@
-package org.guoqing.java_functional.function;
+package org.guoqing.functional.function;
 
 import java.util.function.Function;
 

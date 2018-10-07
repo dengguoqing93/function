@@ -1,4 +1,4 @@
-package org.guoqing.java_functional;
+package org.guoqing.functional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

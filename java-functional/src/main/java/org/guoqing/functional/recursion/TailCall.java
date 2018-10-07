@@ -1,4 +1,4 @@
-package org.guoqing.java_functional.recursion;
+package org.guoqing.functional.recursion;
 
 import java.util.function.Supplier;
 
