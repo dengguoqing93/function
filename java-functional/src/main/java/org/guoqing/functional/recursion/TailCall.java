@@ -25,12 +25,12 @@ public abstract class TailCall<T> {
 
         @Override
         public TailCall<T> resume() {
-            return null;
+            throw new IllegalStateException("Return has no resume");
         }
 
         @Override
         public T eval() {
-            return null;
+            return t;
         }
 
         @Override
@@ -53,17 +53,34 @@ public abstract class TailCall<T> {
 
         @Override
         public T eval() {
-            throw new IllegalStateException("Suspend has no value");
+            TailCall<T> tailRec = this;
+            while (tailRec.isSuspend()){
+                tailRec.resume();
+            }
+            return tailRec.eval();
         }
 
         @Override
         public boolean isSuspend() {
             return true;
         }
+
+
     }
 
-    public static TailCall<Integer> add(int x,int y){
-        return y == 0 ? new TailCall.Return<>(x) :
-                new TailCall.Suspend<>(() -> add(x + 1, y - 1));
+    public static <T> Return<T> ret(T t){
+        return new Return<>(t);
+    }
+
+    public static <T> Suspend<T> sus(Supplier<TailCall<T>> s){
+        return new Suspend<>(s);
+    }
+
+    public static int add(int x,int y){
+        return addRec(x,y).eval();
+    }
+
+    private static TailCall<Integer> addRec(int x,int y){
+        return y == 0 ? ret(x) : sus(() -> addRec(x + 1, y - 1));
     }
 }

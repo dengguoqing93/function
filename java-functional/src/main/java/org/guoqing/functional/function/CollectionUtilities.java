@@ -12,7 +12,7 @@ import java.util.function.Function;
  * @author dengguoqing
  * @date 2018-09-25
  */
-public class CollectionUtilities<T, U> {
+public class CollectionUtilities {
     private static Effect<Double> printWith2Decimals = x -> {
         System.out.printf("%.2f", x);
         System.out.println();
