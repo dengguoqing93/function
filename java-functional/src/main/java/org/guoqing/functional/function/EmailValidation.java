@@ -2,11 +2,10 @@ package org.guoqing.functional.function;
 
 import java.util.function.Function;
 import java.util.regex.Pattern;
+import static org.guoqing.functional.function.Case.*;
+import static org.guoqing.functional.function.Result.failure;
+import static org.guoqing.functional.function.Result.success;
 
-import static function.Case.match;
-import static function.Case.matchCase;
-import static function.Result.failure;
-import static function.Result.success;
 
 /**
  * ${DESCRIPTION}

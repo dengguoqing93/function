@@ -1,13 +1,15 @@
 package org.guoqing.functional.service;
 
-import model.OrderLine;
-import model.Price;
-import model.Product;
-import model.Weight;
+
+import org.guoqing.functional.model.OrderLine;
+import org.guoqing.functional.model.Price;
+import org.guoqing.functional.model.Product;
+import org.guoqing.functional.model.Weight;
 
 import java.util.List;
 
-import static function.CollectionUtilities.*;
+import static org.guoqing.functional.function.CollectionUtilities.foldLeft;
+import static org.guoqing.functional.function.CollectionUtilities.list;
 
 /**
  * ${DESCRIPTION}
