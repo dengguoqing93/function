@@ -102,6 +102,16 @@ public abstract class ListSelf<T> {
      */
     public abstract ListSelf<T> reverse();
 
+    /**
+     * 尾递归调用
+     *
+     * @param identify
+     * @param f
+     * @param <U>
+     * @return
+     */
+    public abstract <U> U foldLeft(U identify, Function<U, Function<T, U>> f);
+
     private static class Nil<T> extends ListSelf<T> {
         private Nil() {
         }
@@ -144,6 +154,11 @@ public abstract class ListSelf<T> {
         @Override
         public ListSelf<T> init() {
             throw new IllegalStateException("init called on empty list");
+        }
+
+        @Override
+        public <U> U foldLeft(U identify, Function<U, Function<T, U>> f) {
+            return null;
         }
 
         @Override
@@ -229,6 +244,19 @@ public abstract class ListSelf<T> {
                     () -> reverse_(new Cons<>(listSelf.head(), acc),
                             listSelf.tail()));
         }
+
+        @Override
+        public <U> U foldLeft(U identify, Function<U, Function<T, U>> f) {
+            return foldLeft_(identify, this, f);
+        }
+
+        private <U> U foldLeft_(U acc, ListSelf<T> listSelf,
+                                Function<U, Function<T, U>> f) {
+            return listSelf.isEmpty() ? acc :
+                    foldLeft_(f.apply(acc).apply(listSelf.head()), listSelf.tail(),
+                            f);
+        }
+
 
         @Override
         public String toString() {
